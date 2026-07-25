@@ -2,5 +2,5 @@
   "latest_version": "3.1.1",
   "mandatory": true,
   "download_url": "https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/download/v3.1.1/PUMA.V.3.1.1.26.7.2026.zip",
-  "changelog": "Fixes the self-update mechanism itself, in two parts. First, the update now renames the running exe aside and copies the new files directly (no detached background process, no polling, no silent failure path). Second, that copy now runs on a background thread instead of the app's window thread, so the window stays responsive during the copy instead of appearing to freeze/go black and then vanish. If a previous update appeared to download and then crash or do nothing, run PUMA_Analyzer.exe again to retry with this corrected build."
+  "changelog": "Adds download/zip integrity verification (a truncated or corrupted download could previously be silently treated as successful, producing a broken install with no error shown) and detailed step-by-step logging to ~/.puma_analyzer/puma.log for diagnosing any future failure. If an update still fails, please check that log file and share it."
 }
