@@ -1,6 +1,6 @@
 {
-  "latest_version": "3.0",
-  "mandatory": false,
-  "download_url": "https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/download/v3.0/PUMA.V.3.24.7.2026.zip",
-  "changelog": ""
+  "latest_version": "3.1.0",
+  "mandatory": true,
+  "download_url": "https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/download/v3.1.0/PUMA.V.3.1.0.25.7.2026.zip",
+  "changelog": "Parallel classic engine now also splits the thickness (d) axis when the inflexion-point axis alone can't use all available CPU cores (verified bit-identical to a serial run). Run duration is now logged. Update required to continue using PUMA Analyzer."
 }
