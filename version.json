@@ -1,6 +1,6 @@
 {
   "latest_version": "3.1.1",
-  "mandatory": true,
+  "mandatory": false,
   "download_url": "https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/download/v3.1.1/PUMA.V.3.1.1.26.7.2026.zip",
   "changelog": "Adds download/zip integrity verification (a truncated or corrupted download could previously be silently treated as successful, producing a broken install with no error shown) and detailed step-by-step logging to ~/.puma_analyzer/puma.log for diagnosing any future failure. If an update still fails, please check that log file and share it."
 }
