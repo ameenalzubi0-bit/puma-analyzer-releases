@@ -2,5 +2,5 @@
   "latest_version": "3.1.1",
   "mandatory": true,
   "download_url": "https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/download/v3.1.1/PUMA.V.3.1.1.26.7.2026.zip",
-  "changelog": "Fixes the self-update mechanism itself: v3.1.0's update could download fully but silently fail to apply (no error shown, no visible progress). The apply step now tolerates antivirus scan delays (~60s retry budget), checks for real copy failures instead of assuming success, and logs every step for diagnosis. If 3.1.0 appeared stuck or did not take effect, this fixes it."
+  "changelog": "Fixes the self-update mechanism itself, rewritten from scratch. The update now renames the running exe aside and copies the new files directly and synchronously -- no detached background process, no polling, no silent failure path. If a previous update appeared to download but not apply, run PUMA_Analyzer.exe again to retry with this corrected build."
 }
