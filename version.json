@@ -1,6 +1,6 @@
 {
-  "latest_version": "3.1.7",
+  "latest_version": "3.1.8",
   "mandatory": true,
-  "download_url": "https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/download/v3.1.7/PUMA_Analyzer_v3.1.7.zip",
-  "changelog": "Fixed: right after updating, the new version could fail to open (a different missing file each time) if something like antivirus scanning still had a brief hold on the freshly written file\nThe app now waits longer before auto-reopening, and retries once automatically if the first attempt closes immediately\nIf the app still does not reopen automatically, simply opening PUMA_Analyzer.exe manually will work -- the update itself is already complete and verified correct"
+  "download_url": "https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/download/v3.1.8/PUMA_Analyzer_v3.1.8.zip",
+  "changelog": "Test release to verify the update mechanism works cleanly end-to-end starting from a healthy v3.1.7 install\nNo functional changes"
 }
