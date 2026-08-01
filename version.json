@@ -1,6 +1,6 @@
 {
-  "latest_version": "3.1.8",
+  "latest_version": "3.1.9",
   "mandatory": true,
-  "download_url": "https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/download/v3.1.8/PUMA_Analyzer_v3.1.8.zip",
-  "changelog": "Test release to verify the update mechanism works cleanly end-to-end starting from a healthy v3.1.7 install\nNo functional changes"
+  "download_url": "https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/download/v3.1.9/PUMA_Analyzer_v3.1.9.zip",
+  "changelog": "The app no longer tries to reopen itself automatically after an update -- this was the actual source of the repeated \"fails to open after updating\" reports\nWhen the update finishes, click Close, then simply open PUMA_Analyzer.exe yourself\nThe update itself is already complete and verified correct at that point"
 }
