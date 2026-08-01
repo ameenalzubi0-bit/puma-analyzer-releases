@@ -1,6 +1,6 @@
 {
-  "latest_version": "3.1.6",
+  "latest_version": "3.1.7",
   "mandatory": true,
-  "download_url": "https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/download/v3.1.6/PUMA_Analyzer_v3.1.6.zip",
-  "changelog": "Fixed: an update could leave a corrupted/broken install instead of restoring the working version, when installed on slow-to-write storage (OneDrive-synced folders, external/removable drives)\nReduced download size (~9 MB smaller) and removed unnecessary bundled files that could trigger antivirus scans\nBuilds on the 3.1.4 fix for the app failing to open after updating"
+  "download_url": "https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/download/v3.1.7/PUMA_Analyzer_v3.1.7.zip",
+  "changelog": "Fixed: right after updating, the new version could fail to open (a different missing file each time) if something like antivirus scanning still had a brief hold on the freshly written file\nThe app now waits longer before auto-reopening, and retries once automatically if the first attempt closes immediately\nIf the app still does not reopen automatically, simply opening PUMA_Analyzer.exe manually will work -- the update itself is already complete and verified correct"
 }
