@@ -1,6 +1,6 @@
 {
-  "latest_version": "3.1.10",
+  "latest_version": "3.1.3",
   "mandatory": true,
-  "download_url": "https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/download/v3.1.10/PUMA_Analyzer_v3.1.10.zip",
-  "changelog": "Test release to verify the update mechanism (with auto-relaunch disabled) works cleanly from a healthy v3.1.9 install\nNo functional changes"
+  "download_url": "https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/download/v3.1.3/PUMA_Analyzer_v3.1.3.zip",
+  "changelog": "Fixed: app could fail to open after updating\nFixed: update could leave a broken install on slow storage (OneDrive, external drives)\nSmaller download, less likely to be blocked by antivirus\nApp no longer reopens itself automatically after updating -- click Close, then open it yourself"
 }
