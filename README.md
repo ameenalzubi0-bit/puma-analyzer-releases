@@ -274,6 +274,42 @@ refractive index, and band gap.
 
 <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/test_run_2_workflow.gif" width="720" alt="Animated walkthrough of Test Run 2 Call 2: setup dialogs and result plots">
 
+### Extension tools gallery
+
+PUMA also ships an optional, opt-in library of extension tools (enabled
+from Preferences) for analysis beyond a single classic/advanced fit.
+These are real screens from inside the app, not mockups:
+
+**TMM Stack Simulator**: solves a coherent multilayer stack (reflectance/
+transmittance, spectroscopic ellipsometry, or attenuated total
+reflection) with an independent transfer-matrix engine.
+
+<img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/ext_tmm_stack.png" width="720" alt="TMM Stack Simulator tool">
+
+**Global Stack Fit (Multi-Angle)**: fits film thickness against measured
+reflectance at one or more incidence angles simultaneously via global
+optimization; the same engine doubles as an inverse-design tool for
+anti-reflection or mirror coating targets.
+
+<img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/ext_global_stack_fit.png" width="720" alt="Global Stack Fit (Multi-Angle) tool">
+
+**Parameter Sweep**: 1D sweep of a single-layer film's thickness,
+computing the wavelength-averaged reflectance at each step.
+
+<img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/ext_parameter_sweep.png" width="720" alt="Parameter Sweep tool">
+
+**Data Factory**: applies a processing step (smoothing, a custom
+formula, thin-slab T/R inversion, and more) to an arbitrary imported
+spectrum.
+
+<img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/ext_data_factory.png" width="720" alt="Data Factory tool">
+
+**Export Center**: one place to export a PDF report, Excel/CSV data,
+figures, an n/k table, or several other interoperable formats
+(JCAMP-DX, HDF5/NeXus) from a single run or a comparison across runs.
+
+<img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/ext_export_center.png" width="720" alt="Export Center tool">
+
 [⬆ Back to top](#table-of-contents)
 
 ## Try it yourself with sample data
