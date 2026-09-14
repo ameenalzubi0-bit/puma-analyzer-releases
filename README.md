@@ -89,7 +89,7 @@ envelope equations themselves in a spreadsheet.
 A typical PUMA session looks like this:
 
 ```mermaid
-%%{init: {"theme": "default", "themeVariables": {"fontSize": "22px"}, "flowchart": {"nodeSpacing": 55, "rankSpacing": 90, "padding": 20}}}%%
+%%{init: {"theme": "default", "themeVariables": {"fontSize": "28px"}, "flowchart": {"nodeSpacing": 60, "rankSpacing": 100, "padding": 20, "useMaxWidth": false}}}%%
 flowchart TD
     A[Import spectrum] --> B[Auto-Configure]
     B --> C[Model Setup]
