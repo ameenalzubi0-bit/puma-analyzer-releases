@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ameenalzubi0-bit.github.io/puma-analyzer-releases/sitemap.xml
