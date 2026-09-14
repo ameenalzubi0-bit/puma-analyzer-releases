@@ -88,46 +88,13 @@ envelope equations themselves in a spreadsheet.
 
 A typical PUMA session looks like this:
 
-```mermaid
-%%{init: {"theme": "default", "themeVariables": {"fontSize": "28px"}, "flowchart": {"nodeSpacing": 60, "rankSpacing": 100, "padding": 20, "useMaxWidth": false}}}%%
-flowchart TD
-    A[Import spectrum] --> B[Auto-Configure]
-    B --> C[Model Setup]
-    C --> D[Run fitting engine]
-    D --> E[Results]
+<p align="center">
+  <a href="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/puma_workflow_tree.png">
+    <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/puma_workflow_tree.png" width="100%" alt="PUMA workflow and results tree: Import, Auto-Configure, Model Setup, Run, then every category of derived result, down to Export">
+  </a>
+</p>
 
-    E --> F[Optical constants]
-    F --> F1[Refractive index n]
-    F --> F2[Extinction coefficient k]
-    F --> F3[Absorption coefficient]
-    F --> F4[Penetration depth]
-    F --> F5[Predicted reflectance]
-    F --> F6[Single surface transmission]
-
-    E --> G[Band gap and absorption]
-    G --> G1[Direct Tauc gap]
-    G --> G2[Indirect Tauc gap]
-    G --> G3[Urbach energy]
-    G --> G4[E04 gap]
-    G --> G5[Literature gap check]
-
-    E --> H[Dielectric and electronic]
-    H --> H1[Dielectric function eps1 eps2]
-    H --> H2[Wemple DiDomenico E0 and Ed]
-    H --> H3[Optical conductivity]
-    H --> H4[Electric susceptibility]
-    H --> H5[Loss tangent]
-    H --> H6[Metallization criterion]
-    H --> H7[Nonlinear optics Millers Rule]
-
-    E --> I[Fit quality and diagnostics]
-    I --> I1[Quadratic Error QE]
-    I --> I2[Kramers Kronig consistency]
-    I --> I3[Fit residuals]
-    I --> I4[Envelope method cross-check]
-
-    E --> J[Export PDF and Excel report]
-```
+*Click the image to open it full-size.*
 
 1. **Import** a measured transmittance spectrum `T(λ)` (a two-column
    wavelength/transmittance file, or a raw instrument export via the
