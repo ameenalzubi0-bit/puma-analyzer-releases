@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use PUMA Analyzer in your research, please cite it as below."
+title: "PUMA Analyzer"
+abstract: >-
+  A Windows desktop application that estimates thin-film thickness and
+  optical constants (refractive index n, extinction coefficient k) from
+  a measured transmission spectrum, using a physics-based transmittance
+  model and a compiled C nonlinear-optimization engine.
+authors:
+  - family-names: "Al-Zu'bi"
+    given-names: "Amin"
+repository-code: "https://github.com/ameenalzubi0-bit/puma-analyzer-releases"
+url: "https://github.com/ameenalzubi0-bit/puma-analyzer-releases"
+license-url: "https://github.com/ameenalzubi0-bit/puma-analyzer-releases/blob/main/LICENSE"
+keywords:
+  - thin-film
+  - optics
+  - optical-constants
+  - spectroscopy
+  - materials-science
+  - refractive-index
+  - band-gap
+  - kramers-kronig
+version: "3.1.5"
+date-released: "2026-09-14"
