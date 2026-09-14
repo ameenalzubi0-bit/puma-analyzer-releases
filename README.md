@@ -545,7 +545,8 @@ Al-Zu'bi. All rights reserved. It is not released under an open-source
 license; use of the packaged application is governed by its
 activation-code access model (see [FAQ](#faq)). The contents of this
 public repository (release binaries, documentation, and sample data)
-may not be redistributed without permission.
+may not be redistributed without permission. See [LICENSE](LICENSE)
+for the full statement.
 
 [⬆ Back to top](#table-of-contents)
 

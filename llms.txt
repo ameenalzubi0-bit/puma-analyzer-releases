@@ -1,33 +1,40 @@
 # PUMA Analyzer
 
-> PUMA Analyzer is a Windows desktop application that estimates thin-film
-> thickness and optical constants (refractive index n, extinction
-> coefficient k) from a measured transmission spectrum, using a
-> physics-based transmittance model and a compiled C nonlinear-optimization
-> engine. It is proprietary software gated by an activation code, not
-> open source; this repository hosts only release binaries and the
-> update-check manifest, no source code.
+> PUMA Analyzer is a Windows desktop application that estimates thin-film thickness and optical constants (refractive index n, extinction coefficient k) from a measured transmission spectrum, using a physics-based transmittance model and a compiled C nonlinear-optimization engine.
 
-## Key facts
+The core engine implements the unconstrained-optimization thin-film
+parameter estimation method of Birgin, Chambouleyron and Martinez,
+minimizing the sum of squared residuals between a measured and modeled
+transmittance spectrum: T(lambda) = A*x / (B - C*x*cos(phi) + D*x^2),
+with x = exp(-4*pi*k*d/lambda) and phi = 4*pi*n*d/lambda. From the fitted
+n, k, and thickness d it derives dozens of further quantities: optical
+band gap (Tauc, direct and indirect), Urbach energy, Wemple-DiDomenico
+dispersion, dielectric function, and a Kramers-Kronig consistency check,
+among others.
 
-- Platform: Windows 10+ (64-bit) only.
-- Core engine: `puma_seq.exe`, compiled from `puma_seq.c`, implementing
-  the unconstrained-optimization thin-film parameter estimation method
-  of Birgin, Chambouleyron and Martinez.
-- Physical model: T(lambda) = A*x / (B - C*x*cos(phi) + D*x^2), with
-  x = exp(-4*pi*k*d/lambda) and phi = 4*pi*n*d/lambda.
-- Derives dozens of further quantities from the fit: optical band gap
-  (Tauc, direct/indirect), Urbach energy, Wemple-DiDomenico dispersion,
-  dielectric function, Kramers-Kronig consistency check, and more.
-- License/activation: requires a one-time activation code (name, email,
-  code) verified against a server; no spectra or project data is ever
-  transmitted.
-- Not open source: proprietary, Copyright Amin Al-Zu'bi.
+PUMA Analyzer is proprietary software, Copyright Amin Al-Zu'bi, gated by
+a one-time activation code (not a subscription). It is not open source;
+this repository holds only release binaries, documentation, sample data,
+and the app's update-check manifest, no application source code.
 
 ## Docs
 
-- [README](README.md): full description, physics equations, screenshots,
-  a downloadable sample dataset with step-by-step instructions, FAQ,
-  and version history.
-- [Releases](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases):
-  downloadable Windows builds and per-version release notes.
+- [README](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/blob/main/README.md): full project description, the physics equations behind every derived quantity, real screenshots and a workflow animation, and a step-by-step guide to reproducing a result with the included sample dataset.
+- [How the core engine works](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/blob/main/README.md#how-the-core-engine-works): the transmittance model and fitting algorithm, with equations.
+- [FAQ](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/blob/main/README.md#faq): activation, privacy, and troubleshooting questions.
+- [Version history](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/blob/main/README.md#version-history): one highlight per release from 3.0 to the current version.
+
+## Releases
+
+- [Latest release](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/latest): current Windows build (.zip), no separate install needed.
+- [All releases](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases): every past version with its own release notes.
+- [version.json](https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/version.json): the machine-readable manifest the app's own update checker reads.
+
+## Sample data
+
+- [sigl0097t-dat.txt](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/blob/main/samples/sigl0097t-dat.txt): a real measured transmission spectrum, the same one used in the README's worked example.
+
+## Contact
+
+- [LinkedIn](https://www.linkedin.com/in/amiinalzubi): the developer, Amin Al-Zu'bi.
+- [Report an issue](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/issues): bug reports and questions.

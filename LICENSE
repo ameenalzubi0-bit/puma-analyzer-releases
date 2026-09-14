@@ -1,0 +1,20 @@
+Copyright (c) Amin Al-Zu'bi. All rights reserved.
+
+PUMA Analyzer is proprietary software. It is not released under an
+open-source license.
+
+This repository (ameenalzubi0-bit/puma-analyzer-releases) hosts only
+release binaries, documentation, sample data, and the application's
+update-check manifest. No application source code is distributed here.
+
+Use of the packaged application (PUMA_Analyzer.exe and its bundled
+components) is governed by its activation-code access model: a valid,
+developer-issued activation code is required before first use. See the
+README's FAQ section for details:
+https://github.com/ameenalzubi0-bit/puma-analyzer-releases#faq
+
+The contents of this repository (release archives, documentation,
+screenshots, and sample data) may not be redistributed, modified, or
+used to create derivative works without prior written permission from
+the copyright holder. Contact information is listed in the README's
+"Developer & contact" section.
