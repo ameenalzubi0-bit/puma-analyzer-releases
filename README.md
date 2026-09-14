@@ -29,7 +29,7 @@
 - [What's new](#whats-new)
 - [FAQ](#faq)
 - [About this repository](#about-this-repository)
-- [Developer](#developer)
+- [Developer & contact](#developer--contact)
 
 ## What is PUMA Analyzer?
 
@@ -56,6 +56,14 @@ reliable numbers from a raw transmission spectrum, not just a curve fit.
 ## What the program actually does
 
 A typical PUMA session looks like this:
+
+```mermaid
+flowchart LR
+    A[Import<br/>T(λ) spectrum] --> B[Auto-Configure<br/>fringe/substrate/bounds]
+    B --> C[Run<br/>C fitting engine]
+    C --> D[Results<br/>n, k, d, Eg, ...]
+    D --> E[Export<br/>PDF / Excel report]
+```
 
 1. **Import** a measured transmittance spectrum `T(λ)` (a two-column
    wavelength/transmittance file, or a raw instrument export via the
@@ -225,7 +233,7 @@ page. Each release is a single `.zip` containing:
   physics/equations reference document.
 
 The app requires a one-time activation code before first use. If you
-don't have one, contact the developer.
+don't have one, see [Developer & contact](#developer--contact) below.
 
 ## System requirements
 
@@ -297,6 +305,12 @@ source is maintained in a private repository; this public repo exists so
 the app's built-in update checker can verify the latest version and
 download it without requiring any embedded credentials.
 
-## Developer
+## Developer & contact
 
 PUMA Analyzer is developed and maintained by **Amin Al-Zu'bi**.
+
+- LinkedIn: [linkedin.com/in/amiinalzubi](https://www.linkedin.com/in/amiinalzubi)
+- Email: [Amiinalzubii@gmail.com](mailto:Amiinalzubii@gmail.com)
+
+Reach out through either channel for an activation code, to report a
+bug, or for anything else related to the project.
