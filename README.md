@@ -566,6 +566,7 @@ PUMA Analyzer is developed and maintained by **Amin Al-Zu'bi**.
 
 - LinkedIn: [linkedin.com/in/amiinalzubi](https://www.linkedin.com/in/amiinalzubi)
 - Email: [Amiinalzubii@gmail.com](mailto:Amiinalzubii@gmail.com)
+- ORCID: [0009-0004-3069-9622](https://orcid.org/0009-0004-3069-9622)
 - Bugs and issues: [GitHub Issues](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/issues)
 
 Reach out through any of these channels for an activation code, to

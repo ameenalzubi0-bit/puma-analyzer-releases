@@ -9,6 +9,7 @@ abstract: >-
 authors:
   - family-names: "Al-Zu'bi"
     given-names: "Amin"
+    orcid: "https://orcid.org/0009-0004-3069-9622"
 repository-code: "https://github.com/ameenalzubi0-bit/puma-analyzer-releases"
 url: "https://github.com/ameenalzubi0-bit/puma-analyzer-releases"
 license-url: "https://github.com/ameenalzubi0-bit/puma-analyzer-releases/blob/main/LICENSE"
