@@ -90,10 +90,10 @@ A typical PUMA session looks like this:
 
 ```mermaid
 flowchart LR
-    A[Import<br/>T(λ) spectrum] --> B[Auto-Configure<br/>fringe/substrate/bounds]
-    B --> C[Run<br/>C fitting engine]
-    C --> D[Results<br/>n, k, d, Eg, ...]
-    D --> E[Export<br/>PDF / Excel report]
+    A[Import spectrum] --> B[Auto-Configure]
+    B --> C[Run: C engine]
+    C --> D[Results]
+    D --> E[Export report]
 ```
 
 1. **Import** a measured transmittance spectrum `T(λ)` (a two-column
