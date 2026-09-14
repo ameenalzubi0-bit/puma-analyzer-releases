@@ -1,0 +1,33 @@
+# PUMA Analyzer
+
+> PUMA Analyzer is a Windows desktop application that estimates thin-film
+> thickness and optical constants (refractive index n, extinction
+> coefficient k) from a measured transmission spectrum, using a
+> physics-based transmittance model and a compiled C nonlinear-optimization
+> engine. It is proprietary software gated by an activation code, not
+> open source; this repository hosts only release binaries and the
+> update-check manifest, no source code.
+
+## Key facts
+
+- Platform: Windows 10+ (64-bit) only.
+- Core engine: `puma_seq.exe`, compiled from `puma_seq.c`, implementing
+  the unconstrained-optimization thin-film parameter estimation method
+  of Birgin, Chambouleyron and Martinez.
+- Physical model: T(lambda) = A*x / (B - C*x*cos(phi) + D*x^2), with
+  x = exp(-4*pi*k*d/lambda) and phi = 4*pi*n*d/lambda.
+- Derives dozens of further quantities from the fit: optical band gap
+  (Tauc, direct/indirect), Urbach energy, Wemple-DiDomenico dispersion,
+  dielectric function, Kramers-Kronig consistency check, and more.
+- License/activation: requires a one-time activation code (name, email,
+  code) verified against a server; no spectra or project data is ever
+  transmitted.
+- Not open source: proprietary, Copyright Amin Al-Zu'bi.
+
+## Docs
+
+- [README](README.md): full description, physics equations, screenshots,
+  a downloadable sample dataset with step-by-step instructions, FAQ,
+  and version history.
+- [Releases](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases):
+  downloadable Windows builds and per-version release notes.

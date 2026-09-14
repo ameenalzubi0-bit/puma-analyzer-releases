@@ -183,6 +183,9 @@ source file) for the app's more advanced analysis tools.
 
 ### Physical quantities the fit derives
 
+<details>
+<summary>Show the four core equations (Tauc gap, Urbach energy, Wemple-DiDomenico, Kramers-Kronig)</summary>
+
 Once `n(λ)`, `k(λ)`, and `d` are known, PUMA derives dozens of further
 physical quantities from them (the tree in
 [What the program actually does](#what-the-program-actually-does) lists
@@ -233,6 +236,8 @@ PUMA numerically transforms the fitted `ε2(E)` into a KK-predicted
 `ε1(E)` and reports the RMS deviation from the fit's own `ε1(E)` as a
 built-in, fit-independent honesty check: a large deviation is PUMA
 telling you the fit is likely inconsistent, not just reporting a number.
+
+</details>
 
 [⬆ Back to top](#table-of-contents)
 
@@ -431,12 +436,20 @@ don't have one, see [Developer & contact](#developer--contact) below.
 | Version | Highlight |
 |---|---|
 | [3.1.5](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.5) | Large AI/ML and physics/optics tool library added; license-activation and update-check wiring gap fixed (both are now genuinely active in the shipped exe) |
+
+<details>
+<summary>Show earlier versions (3.0 to 3.1.4)</summary>
+
+| Version | Highlight |
+|---|---|
 | [3.1.4](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.4) | SCOUT extension tools, run starring/notes, drag-and-drop import, faster parallel Classic search, smaller result exports |
 | [3.1.3](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.3) | Update-install reliability fixes: broken installs on slow storage, app failing to reopen after updating |
 | [3.1.2](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.2) | Update dialog reliability fixes; clearer Update Now / Not Now choice and per-version change list |
 | [3.1.1](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.1) | Update download/zip integrity verification, with detailed logging for diagnosing update failures |
 | [3.1.0](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.0) | Parallel Classic engine also splits the thickness axis for better CPU use; run-duration timing logged |
 | [3.0](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.0) | Initial release of the current V3 GUI generation |
+
+</details>
 
 See [Releases](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases)
 for the full notes on every version.
@@ -463,18 +476,28 @@ page for the specific changes in that version. Recent highlights:
 
 ## FAQ
 
-**Why does PUMA need a serial/activation code?**
+<details>
+<summary>Why does PUMA need a serial/activation code?</summary>
+
 The activation gate protects the project as a scientific tool developed
 and maintained by one person: it is not a subscription or a
 commercial-license mechanism, just access control. See
 [Download](#download) to request a code.
 
-**Is PUMA open source?**
+</details>
+
+<details>
+<summary>Is PUMA open source?</summary>
+
 The release binaries and update manifest in this repository are public,
 but the application's source code is maintained in a private repository
 (see [About this repository](#about-this-repository)).
 
-**Does PUMA send my measurement data anywhere?**
+</details>
+
+<details>
+<summary>Does PUMA send my measurement data anywhere?</summary>
+
 No. Fitting and analysis run entirely locally on your machine. The only
 network calls PUMA makes are the one-time activation check and the
 startup update check: neither transmits spectra or project data. The
@@ -483,19 +506,29 @@ type into the activation dialog, nothing else; the periodic status
 recheck (at most once a day) sends only the activation code, not your
 name or email again.
 
-**Why is the engine a compiled C program instead of pure Python?**
+</details>
+
+<details>
+<summary>Why is the engine a compiled C program instead of pure Python?</summary>
+
 `puma_seq.c` is a long-vetted, scientifically-validated numerical core;
 recompiling it with a different toolchain has been shown to shift results
 at the margins, so the shipped binary is pinned and hash-verified rather
 than rebuilt on each machine: see
 [How the core engine works](#how-the-core-engine-works).
 
-**What should I check if my fit result looks wrong or the QE is high?**
+</details>
+
+<details>
+<summary>What should I check if my fit result looks wrong or the QE is high?</summary>
+
 Try Auto-Configure again with a tighter wavelength range around the
 region with clear interference fringes, and check the Envelope Method
 cross-check view (see [Screenshots](#screenshots)) against the fitted
 result: a large disagreement between the two usually points at the
 substrate index or an input-data issue rather than the optimizer.
+
+</details>
 
 [⬆ Back to top](#table-of-contents)
 
