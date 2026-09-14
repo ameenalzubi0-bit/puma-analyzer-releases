@@ -82,6 +82,8 @@ envelope equations themselves in a spreadsheet.
 | Uncertainty | Not computed | Monte Carlo, bootstrap, and Bayesian MCMC |
 | Best for | A fast first estimate on a known material | Physically-constrained fits, uncertainty budgets, sensitivity analysis |
 
+[⬆ Back to top](#table-of-contents)
+
 ## What the program actually does
 
 A typical PUMA session looks like this:
@@ -122,6 +124,8 @@ extensive library of optional analysis tools (multilayer/graded-film
 transfer-matrix modeling, ellipsometry, uncertainty budgets, AI-assisted
 diagnostics: see the [release notes](#whats-new) for the full list),
 and a full audit trail of what was computed and when.
+
+[⬆ Back to top](#table-of-contents)
 
 ## How the core engine works
 
@@ -177,6 +181,8 @@ publications. The same building blocks extend to reflectance and to
 multilayer/graded stacks (functions `compr()` and `comptr()` in the same
 source file) for the app's more advanced analysis tools.
 
+[⬆ Back to top](#table-of-contents)
+
 ## Screenshots
 
 **Main window**
@@ -215,6 +221,8 @@ refractive index, and band gap.
 
 <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/test_run_2_workflow.gif" width="720" alt="Animated walkthrough of Test Run 2 Call 2: setup dialogs and result plots">
 
+[⬆ Back to top](#table-of-contents)
+
 ## Try it yourself with sample data
 
 No instrument handy? The exact real dataset used in
@@ -241,6 +249,8 @@ reproduce that walkthrough yourself:
 6. Open **Results** to see the fitted spectrum, refractive index, and
    band gap, the same figures shown in the [workflow animation](#test-run-2)
    above.
+
+[⬆ Back to top](#table-of-contents)
 
 ## Sample engine run
 
@@ -285,6 +295,8 @@ lambda                     t
 QUADRATIC ERROR = 3.188115e-01
 ```
 
+[⬆ Back to top](#table-of-contents)
+
 ## Download
 
 <p align="center">
@@ -307,6 +319,8 @@ page. Each release is a single `.zip` containing:
 The app requires a one-time activation code before first use. If you
 don't have one, see [Developer & contact](#developer--contact) below.
 
+[⬆ Back to top](#table-of-contents)
+
 ## System requirements
 
 - **OS:** Windows 10 or later (64-bit). PUMA is a Windows-only packaged
@@ -320,6 +334,8 @@ don't have one, see [Developer & contact](#developer--contact) below.
   every startup (update check); the app otherwise runs fully offline.
 - **GPU:** not required: all computation, including the optional AI/ML
   tools, runs on CPU.
+
+[⬆ Back to top](#table-of-contents)
 
 ## Version history
 
@@ -336,6 +352,8 @@ don't have one, see [Developer & contact](#developer--contact) below.
 See [Releases](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases)
 for the full notes on every version.
 
+[⬆ Back to top](#table-of-contents)
+
 ## What's new
 
 See each release's notes on the
@@ -351,6 +369,8 @@ page for the specific changes in that version. Recent highlights:
   thick films that previously could report an error instead of a result.
 - Update checks no longer force-install a package without verifying it
   actually came from this project.
+
+[⬆ Back to top](#table-of-contents)
 
 ## FAQ
 
@@ -388,6 +408,8 @@ cross-check view (see [Screenshots](#screenshots)) against the fitted
 result: a large disagreement between the two usually points at the
 substrate index or an input-data issue rather than the optimizer.
 
+[⬆ Back to top](#table-of-contents)
+
 ## About this repository
 
 This repository hosts **release binaries and the update-check manifest
@@ -395,6 +417,8 @@ only**: it intentionally contains no source code. PUMA Analyzer's
 source is maintained in a private repository; this public repo exists so
 the app's built-in update checker can verify the latest version and
 download it without requiring any embedded credentials.
+
+[⬆ Back to top](#table-of-contents)
 
 ## Developer & contact
 
