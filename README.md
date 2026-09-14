@@ -13,6 +13,15 @@
     <img src="https://img.shields.io/github/v/release/ameenalzubi0-bit/puma-analyzer-releases?label=latest%20release&color=2f6f5e" alt="Latest release">
   </a>
   <img src="https://img.shields.io/badge/platform-Windows-0078D6" alt="Platform: Windows">
+  <a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/issues">
+    <img src="https://img.shields.io/badge/issues-report%20one-b23b3b" alt="Report an issue">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/latest">
+    <img src="https://img.shields.io/badge/%E2%AC%87%20Download-PUMA%20Analyzer%20for%20Windows-2f6f5e?style=for-the-badge" alt="Download PUMA Analyzer">
+  </a>
 </p>
 
 <p align="center">
@@ -278,6 +287,12 @@ QUADRATIC ERROR = 3.188115e-01
 
 ## Download
 
+<p align="center">
+  <a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/latest">
+    <img src="https://img.shields.io/badge/%E2%AC%87%20Download-PUMA%20Analyzer%20for%20Windows-2f6f5e?style=for-the-badge" alt="Download PUMA Analyzer">
+  </a>
+</p>
+
 Grab the latest Windows build from the
 **[Releases](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/latest)**
 page. Each release is a single `.zip` containing:
@@ -387,6 +402,7 @@ PUMA Analyzer is developed and maintained by **Amin Al-Zu'bi**.
 
 - LinkedIn: [linkedin.com/in/amiinalzubi](https://www.linkedin.com/in/amiinalzubi)
 - Email: [Amiinalzubii@gmail.com](mailto:Amiinalzubii@gmail.com)
+- Bugs and issues: [GitHub Issues](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/issues)
 
-Reach out through either channel for an activation code, to report a
-bug, or for anything else related to the project.
+Reach out through any of these channels for an activation code, to
+report a bug, or for anything else related to the project.
