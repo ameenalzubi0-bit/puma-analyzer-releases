@@ -23,3 +23,11 @@ keywords:
   - kramers-kronig
 version: "3.1.5"
 date-released: "2026-09-14"
+doi: "10.5281/zenodo.22755155"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22754425"
+    description: "Concept DOI: always resolves to the latest archived version."
+  - type: doi
+    value: "10.5281/zenodo.22755155"
+    description: "Version-specific DOI for 3.1.5."

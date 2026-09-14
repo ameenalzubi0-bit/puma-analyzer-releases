@@ -16,6 +16,9 @@
   <a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/issues">
     <img src="https://img.shields.io/badge/issues-report%20one-b23b3b" alt="Report an issue">
   </a>
+  <a href="https://doi.org/10.5281/zenodo.22754425">
+    <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22754425.svg" alt="DOI">
+  </a>
 </p>
 
 <p align="center">
@@ -547,6 +550,13 @@ activation-code access model (see [FAQ](#faq)). The contents of this
 public repository (release binaries, documentation, and sample data)
 may not be redistributed without permission. See [LICENSE](LICENSE)
 for the full statement.
+
+**Citing PUMA Analyzer:** every release, including past ones, is
+archived on Zenodo with a permanent DOI. Use the concept DOI
+[10.5281/zenodo.22754425](https://doi.org/10.5281/zenodo.22754425) to
+always cite the latest version, or see
+[CITATION.cff](CITATION.cff) / GitHub's "Cite this repository" button
+for a ready-made citation.
 
 [⬆ Back to top](#table-of-contents)
 
