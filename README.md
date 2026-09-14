@@ -28,7 +28,6 @@
 - [System requirements](#system-requirements)
 - [What's new](#whats-new)
 - [FAQ](#faq)
-- [Citation](#citation)
 - [About this repository](#about-this-repository)
 - [Developer](#developer)
 
@@ -93,9 +92,9 @@ The numerical core (`puma_seq.exe`, compiled from `puma_seq.c`) solves
 an **inverse problem**: given a measured transmittance spectrum, recover
 the film thickness and optical constants that produced it. This is based
 on the unconstrained-optimization formulation of the problem developed by
-Birgin, Chambouleyron and Martínez (see [Citation](#citation)); it does
-**not** modify or re-derive that formalism, only ships it as a
-production-grade engine.
+Birgin, Chambouleyron and Martínez, credited directly in the engine's own
+source header; it does **not** modify or re-derive that formalism, only
+ships it as a production-grade engine.
 
 **The physical model.** For a thin absorbing film (refractive index `n`,
 extinction coefficient `k`, thickness `d`) on a transparent substrate
@@ -147,21 +146,27 @@ source file) for the app's more advanced analysis tools.
 
 <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/screenshot_main_window.png" width="720" alt="PUMA Analyzer main window">
 
-**Refractive-index dispersion result**
+The plots below are unedited output figures pulled directly from two real
+PUMA analysis runs on real transmission-spectrum data, exported by the
+app itself (not staged demo images).
 
-<img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/screenshot_optical_constants.png" width="720" alt="Refractive index n(lambda) result plot">
+### Test Run 1
 
-**Optical band gap (Tauc plot)**
+Film thickness 350 nm, average refractive index 2.374, direct band gap
+2.832 eV, fit QE = 0.00900.
 
-<img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/screenshot_bandgap_tauc.png" width="720" alt="Direct Tauc plot with extracted band gap">
+<img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/test_run_1_observed_vs_fitted.png" width="720" alt="Test Run 1: observed vs fitted transmittance spectrum">
 
-**Fit-free Swanepoel envelope cross-check**
+<img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/test_run_1_refractive_index.png" width="720" alt="Test Run 1: refractive index n versus wavelength">
 
-<img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/screenshot_envelope_method.png" width="720" alt="Swanepoel envelope method cross-check view">
+### Test Run 2
 
-**Full physics/derived-quantities dashboard**
+Film thickness 100 nm, average refractive index 3.685, direct band gap
+2.074 eV, fit QE = 0.00670.
 
-<img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/screenshot_physics_tiles.png" width="720" alt="Physics summary tiles dashboard">
+<img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/test_run_2_bandgap_tauc.png" width="720" alt="Test Run 2: direct Tauc plot with extracted band gap">
+
+<img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/test_run_2_residuals.png" width="720" alt="Test Run 2: fit residuals (observed minus calculated transmittance)">
 
 ## Sample engine run
 
@@ -271,10 +276,10 @@ network calls PUMA makes are the one-time activation check and the
 startup update check: neither transmits spectra or project data.
 
 **Why is the engine a compiled C program instead of pure Python?**
-`puma_seq.c` is a long-vetted, scientifically-validated numerical core
-(see [Citation](#citation)); recompiling it with a different toolchain has
-been shown to shift results at the margins, so the shipped binary is
-pinned and hash-verified rather than rebuilt on each machine: see
+`puma_seq.c` is a long-vetted, scientifically-validated numerical core;
+recompiling it with a different toolchain has been shown to shift results
+at the margins, so the shipped binary is pinned and hash-verified rather
+than rebuilt on each machine: see
 [How the core engine works](#how-the-core-engine-works).
 
 **What should I check if my fit result looks wrong or the QE is high?**
@@ -283,19 +288,6 @@ region with clear interference fringes, and check the Envelope Method
 cross-check view (see [Screenshots](#screenshots)) against the fitted
 result: a large disagreement between the two usually points at the
 substrate index or an input-data issue rather than the optimizer.
-
-## Citation
-
-PUMA's core engine implements the unconstrained-optimization formulation
-of the thin-film parameter estimation problem described in:
-
-> E. G. Birgin, I. Chambouleyron, J. M. Martínez, "Estimation of the
-> optical constants and the thickness of thin films using unconstrained
-> optimization", *Journal of Computational Physics* **151**, pp. 862–880,
-> 1999.
-
-If PUMA Analyzer was useful in your research, please consider citing the
-paper above, which the engine's own source code also credits directly.
 
 ## About this repository
 
