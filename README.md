@@ -89,11 +89,43 @@ envelope equations themselves in a spreadsheet.
 A typical PUMA session looks like this:
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[Import spectrum] --> B[Auto-Configure]
-    B --> C[Run: C engine]
-    C --> D[Results]
-    D --> E[Export report]
+    B --> C[Model Setup]
+    C --> D[Run fitting engine]
+    D --> E[Results]
+
+    E --> F[Optical constants]
+    F --> F1[Refractive index n]
+    F --> F2[Extinction coefficient k]
+    F --> F3[Absorption coefficient]
+    F --> F4[Penetration depth]
+    F --> F5[Predicted reflectance]
+    F --> F6[Single surface transmission]
+
+    E --> G[Band gap and absorption]
+    G --> G1[Direct Tauc gap]
+    G --> G2[Indirect Tauc gap]
+    G --> G3[Urbach energy]
+    G --> G4[E04 gap]
+    G --> G5[Literature gap check]
+
+    E --> H[Dielectric and electronic]
+    H --> H1[Dielectric function eps1 eps2]
+    H --> H2[Wemple DiDomenico E0 and Ed]
+    H --> H3[Optical conductivity]
+    H --> H4[Electric susceptibility]
+    H --> H5[Loss tangent]
+    H --> H6[Metallization criterion]
+    H --> H7[Nonlinear optics Millers Rule]
+
+    E --> I[Fit quality and diagnostics]
+    I --> I1[Quadratic Error QE]
+    I --> I2[Kramers Kronig consistency]
+    I --> I3[Fit residuals]
+    I --> I4[Envelope method cross-check]
+
+    E --> J[Export PDF and Excel report]
 ```
 
 1. **Import** a measured transmittance spectrum `T(λ)` (a two-column
@@ -180,6 +212,59 @@ global optimization strategy described in the engine's own reference
 publications. The same building blocks extend to reflectance and to
 multilayer/graded stacks (functions `compr()` and `comptr()` in the same
 source file) for the app's more advanced analysis tools.
+
+### Physical quantities the fit derives
+
+Once `n(λ)`, `k(λ)`, and `d` are known, PUMA derives dozens of further
+physical quantities from them (the tree in
+[What the program actually does](#what-the-program-actually-does) lists
+the categories). Four of the standard relations behind them, each
+implemented in `puma_science/`:
+
+**Optical band gap (Tauc plot).** The absorption coefficient
+`α = 4πk/λ` is replotted as `(αE)^r` against photon energy `E`, and the
+linear region is extrapolated to zero:
+
+```math
+(\alpha E)^{r} = B\,(E - E_g)
+```
+
+with `r = 2` for an allowed direct gap and `r = 1/2` for an allowed
+indirect gap; `Eg` is the extrapolated intercept.
+
+**Urbach energy.** Below the band edge, absorption typically follows an
+exponential tail:
+
+```math
+\alpha(E) = \alpha_0 \, e^{E/E_u}
+```
+
+so `ln(α)` is linear in `E`, and the Urbach energy `Eu` is the inverse
+of that line's slope, a measure of structural/thermal disorder in the
+film.
+
+**Wemple-DiDomenico single-oscillator dispersion.** The refractive
+index away from any absorption resonance is modeled with a single
+effective oscillator of energy `E0` and dispersion strength `Ed`:
+
+```math
+n^2(E) - 1 \;=\; \frac{E_0 E_d}{E_0^{2} - E^{2}}
+```
+
+fit as a straight line in `1/(n²-1)` versus `E²`; `n0` (the refractive
+index in the limit `E → 0`) follows directly from the fitted `E0`/`Ed`.
+
+**Kramers-Kronig consistency.** For a causal linear response, the real
+and imaginary parts of the dielectric function are not independent:
+
+```math
+\varepsilon_1(E) = 1 + \frac{2}{\pi}\,\mathrm{P.V.}\!\int_0^{\infty} \frac{E'\,\varepsilon_2(E')}{E'^{2}-E^{2}}\,dE'
+```
+
+PUMA numerically transforms the fitted `ε2(E)` into a KK-predicted
+`ε1(E)` and reports the RMS deviation from the fit's own `ε1(E)` as a
+built-in, fit-independent honesty check: a large deviation is PUMA
+telling you the fit is likely inconsistent, not just reporting a number.
 
 [⬆ Back to top](#table-of-contents)
 
