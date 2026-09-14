@@ -15,6 +15,10 @@
   <img src="https://img.shields.io/badge/platform-Windows-0078D6" alt="Platform: Windows">
 </p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/test_run_2_workflow.gif" width="600" alt="PUMA Analyzer: real workflow from setup to results">
+</p>
+
 ---
 
 ## Table of contents
@@ -40,6 +44,12 @@ films directly from transmission data, using a physics-based transmittance
 model combined with robust nonlinear global optimization. It is built for
 researchers and lab technicians working with thin-film optics who need
 reliable numbers from a raw transmission spectrum, not just a curve fit.
+
+**Who it's for:** thin-film and optical-materials researchers, graduate
+students processing spectrophotometer data for a thesis or paper, and
+QC technicians in a coatings or semiconductor lab who need a
+thickness/n/k number they can trust, without hand-fitting the Swanepoel
+envelope equations themselves in a spreadsheet.
 
 - **Envelope & Fringe Analysis**: automatic detection of interference
   extrema (`TM`/`Tm` envelopes) and a fit-free cross-check of the film's
@@ -343,7 +353,11 @@ but the application's source code is maintained in a private repository
 **Does PUMA send my measurement data anywhere?**
 No. Fitting and analysis run entirely locally on your machine. The only
 network calls PUMA makes are the one-time activation check and the
-startup update check: neither transmits spectra or project data.
+startup update check: neither transmits spectra or project data. The
+activation call sends only the name, email, and activation code you
+type into the activation dialog, nothing else; the periodic status
+recheck (at most once a day) sends only the activation code, not your
+name or email again.
 
 **Why is the engine a compiled C program instead of pure Python?**
 `puma_seq.c` is a long-vetted, scientifically-validated numerical core;
