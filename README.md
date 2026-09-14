@@ -23,9 +23,11 @@
 - [What the program actually does](#what-the-program-actually-does)
 - [How the core engine works](#how-the-core-engine-works)
 - [Screenshots](#screenshots)
+- [Try it yourself with sample data](#try-it-yourself-with-sample-data)
 - [Sample engine run](#sample-engine-run)
 - [Download](#download)
 - [System requirements](#system-requirements)
+- [Version history](#version-history)
 - [What's new](#whats-new)
 - [FAQ](#faq)
 - [About this repository](#about-this-repository)
@@ -194,6 +196,33 @@ refractive index, and band gap.
 
 <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/test_run_2_workflow.gif" width="720" alt="Animated walkthrough of Test Run 2 Call 2: setup dialogs and result plots">
 
+## Try it yourself with sample data
+
+No instrument handy? The exact real dataset used in
+[Test Run 2](#test-run-2) above (`sigl0097t-dat.txt`, a real measured
+transmittance spectrum) is included in this repository under
+[`samples/sigl0097t-dat.txt`](samples/sigl0097t-dat.txt) so you can
+reproduce that walkthrough yourself:
+
+1. **Import** the downloaded `sigl0097t-dat.txt` file (`Import Data` on
+   the main window).
+2. **Setup → Film Stack:** set Total layers to `4`, Substrate layer
+   index to `2`, Substrate material to `Glass, Corning 7059`.
+3. **Setup → Layer Optical Bounds & Spectra:** Thickness `10` to `200`
+   step `10`; Inflexion point `540` to `1530` step `100`; `n` at long
+   wavelength `3` to `5` step `1`; `n` at short wavelength `3` to `5`
+   step `1`; `k` at max wavelength `0.10` to `0.10` step `0.05`; Data
+   type `T`; Wavelength `540` to `1530`; Observations `100`. Click
+   **Apply Model**.
+4. **Run** (Call 1) and wait for it to finish.
+5. Open **Run** again for a refinement pass (Call 2): narrow Thickness
+   to `95` to `105` step `1`, fix Inflexion point at `540`, Max
+   iterations `10000`, and set Target QE to whatever Call 1 reported
+   (`0.00670063` in the reference run above).
+6. Open **Results** to see the fitted spectrum, refractive index, and
+   band gap, the same figures shown in the [workflow animation](#test-run-2)
+   above.
+
 ## Sample engine run
 
 The output below is a **real run of the vetted, shipped `puma_seq.exe`**
@@ -266,6 +295,21 @@ don't have one, see [Developer & contact](#developer--contact) below.
   every startup (update check); the app otherwise runs fully offline.
 - **GPU:** not required: all computation, including the optional AI/ML
   tools, runs on CPU.
+
+## Version history
+
+| Version | Highlight |
+|---|---|
+| [3.1.5](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.5) | Large AI/ML and physics/optics tool library added; license-activation and update-check wiring gap fixed (both are now genuinely active in the shipped exe) |
+| [3.1.4](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.4) | SCOUT extension tools, run starring/notes, drag-and-drop import, faster parallel Classic search, smaller result exports |
+| [3.1.3](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.3) | Update-install reliability fixes: broken installs on slow storage, app failing to reopen after updating |
+| [3.1.2](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.2) | Update dialog reliability fixes; clearer Update Now / Not Now choice and per-version change list |
+| [3.1.1](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.1) | Update download/zip integrity verification, with detailed logging for diagnosing update failures |
+| [3.1.0](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.0) | Parallel Classic engine also splits the thickness axis for better CPU use; run-duration timing logged |
+| [3.0](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.0) | Initial release of the current V3 GUI generation |
+
+See [Releases](https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases)
+for the full notes on every version.
 
 ## What's new
 
