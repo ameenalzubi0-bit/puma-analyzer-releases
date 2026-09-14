@@ -5,17 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PUMA Analyzer: Thin-Film Thickness &amp; Optical Constants Software</title>
 <meta name="description" content="PUMA Analyzer is a Windows desktop application that estimates thin-film thickness and optical constants (refractive index n, extinction coefficient k) from a measured transmission spectrum, using a physics-based transmittance model and a compiled nonlinear-optimization engine.">
+<meta name="keywords" content="thin film thickness, optical constants, refractive index, extinction coefficient, spectroscopy software, materials science, band gap, Tauc plot, Kramers-Kronig, Swanepoel method, thin film analysis software">
+<meta name="author" content="Amin Al-Zu'bi">
+<meta name="robots" content="index, follow">
 <link rel="canonical" href="https://ameenalzubi0-bit.github.io/puma-analyzer-releases/">
 <link rel="icon" href="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/puma_logo.png">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="PUMA Analyzer: Thin-Film Thickness & Optical Constants Software">
+<meta property="og:site_name" content="PUMA Analyzer">
+<meta property="og:title" content="PUMA Analyzer: Thin-Film Thickness &amp; Optical Constants Software">
 <meta property="og:description" content="Estimates thin-film thickness and optical constants (n, k) from a measured transmission spectrum, using a physics-based transmittance model and a compiled nonlinear-optimization engine.">
 <meta property="og:url" content="https://ameenalzubi0-bit.github.io/puma-analyzer-releases/">
 <meta property="og:image" content="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/puma_workflow_tree.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="PUMA Analyzer: Thin-Film Thickness & Optical Constants Software">
+<meta name="twitter:title" content="PUMA Analyzer: Thin-Film Thickness &amp; Optical Constants Software">
 <meta name="twitter:description" content="Estimates thin-film thickness and optical constants (n, k) from a measured transmission spectrum, using a physics-based transmittance model and a compiled nonlinear-optimization engine.">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/puma_workflow_tree.png">
 
@@ -36,113 +40,462 @@
     "https://doi.org/10.5281/zenodo.22754425",
     "https://archive.softwareheritage.org/swh:1:snp:6a05db968f59f36c60ebf6b35062bca534beec96"
   ],
-  "author": {
-    "@type": "Person",
-    "name": "Amin Al-Zu'bi",
-    "sameAs": "https://www.linkedin.com/in/amiinalzubi"
-  },
+  "author": { "@type": "Person", "name": "Amin Al-Zu'bi", "sameAs": "https://www.linkedin.com/in/amiinalzubi" },
   "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD",
+    "@type": "Offer", "price": "0", "priceCurrency": "USD",
     "availability": "https://schema.org/InStock",
     "description": "Free to download; requires a one-time activation code (not a subscription)."
   },
   "keywords": "thin-film, optics, optical constants, spectroscopy, materials science, refractive index, band gap, Kramers-Kronig"
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Why does PUMA need a serial/activation code?",
+     "acceptedAnswer": {"@type": "Answer", "text": "The activation gate protects the project as a scientific tool developed and maintained by one person: it is not a subscription or a commercial-license mechanism, just access control."}},
+    {"@type": "Question", "name": "Is PUMA open source?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. The release binaries and update manifest are public, but the application source code is maintained in a private repository."}},
+    {"@type": "Question", "name": "Does PUMA send my measurement data anywhere?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. Fitting and analysis run entirely locally. The only network calls are a one-time activation check and a startup update check; neither transmits spectra or project data."}},
+    {"@type": "Question", "name": "Why is the engine a compiled C program instead of pure Python?",
+     "acceptedAnswer": {"@type": "Answer", "text": "The C engine is a long-vetted, scientifically-validated numerical core. Recompiling it with a different toolchain has been shown to shift results at the margins, so the shipped binary is pinned and hash-verified rather than rebuilt on each machine."}}
+  ]
+}
+</script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'media',
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+        colors: {
+          navy: { DEFAULT: '#1e3a5f', 50:'#eef3f8',100:'#d7e3ef',600:'#274a73',700:'#1e3a5f',800:'#152a45',900:'#0d1b2e' },
+          teal: { DEFAULT: '#2f6f5e', 50:'#eef7f4',100:'#d6ede4',400:'#4c9c86',500:'#3a8b74',600:'#2f6f5e',700:'#25594b' }
+        }
+      }
+    }
+  }
+</script>
 <style>
-  :root { color-scheme: light dark; }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: #f5f7f9;
-    color: #1e293b;
-    line-height: 1.6;
-  }
-  @media (prefers-color-scheme: dark) {
-    body { background: #0f172a; color: #e2e8f0; }
-    a { color: #7fd6bd; }
-    .card { background: #1e293b !important; border-color: #334155 !important; }
-  }
-  main { max-width: 780px; margin: 0 auto; padding: 32px 16px 64px; }
-  header { text-align: center; margin-bottom: 32px; }
-  header img.logo { width: 120px; height: auto; }
-  h1 { font-size: 1.8rem; margin: 12px 0 4px; }
-  .tagline { color: #4c9c86; font-weight: 600; }
-  .badges { margin: 16px 0; }
-  .badges img { margin: 2px; }
-  .cta {
-    display: inline-block; margin-top: 12px; padding: 12px 28px;
-    background: #2f6f5e; color: white !important; text-decoration: none;
-    border-radius: 8px; font-weight: 700;
-  }
-  .card {
-    background: white; border: 1px solid #e2e8f0; border-radius: 12px;
-    padding: 20px 24px; margin: 20px 0;
-  }
-  img.hero { max-width: 100%; border-radius: 8px; }
-  code { background: rgba(127,127,127,0.15); padding: 1px 5px; border-radius: 4px; }
-  footer { text-align: center; margin-top: 40px; font-size: 0.85rem; opacity: 0.75; }
-  a { color: #2f6f5e; }
+  html { scroll-behavior: smooth; }
+  .katex-display { overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
+  .anchor-offset { scroll-margin-top: 88px; }
+  details > summary { cursor: pointer; list-style: none; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .chev { transform: rotate(180deg); }
 </style>
 </head>
-<body>
-<main>
-  <header>
-    <img class="logo" src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/puma_logo.png" alt="PUMA Analyzer logo">
-    <h1>PUMA Analyzer</h1>
-    <p class="tagline">Thin-film thickness and optical-constants estimation from transmission spectra</p>
-    <div class="badges">
-      <img src="https://img.shields.io/github/v/release/ameenalzubi0-bit/puma-analyzer-releases?label=latest%20release&amp;color=2f6f5e" alt="Latest release">
+<body class="font-sans text-slate-800 dark:text-slate-100 bg-slate-50 dark:bg-slate-900">
+
+<!-- ============ NAV ============ -->
+<nav class="fixed w-full z-40 top-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur border-b border-slate-200 dark:border-slate-800">
+  <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+    <a href="#top" class="flex items-center gap-2 font-extrabold text-navy dark:text-white text-lg">
+      <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/puma_logo.png" class="w-8 h-8 rounded" alt="PUMA logo">
+      PUMA Analyzer
+    </a>
+    <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+      <a href="#features" class="hover:text-teal-600">Features</a>
+      <a href="#how-it-works" class="hover:text-teal-600">How it works</a>
+      <a href="#engine" class="hover:text-teal-600">The engine</a>
+      <a href="#screenshots" class="hover:text-teal-600">Screenshots</a>
+      <a href="#extensions" class="hover:text-teal-600">Extensions</a>
+      <a href="#faq" class="hover:text-teal-600">FAQ</a>
+    </div>
+    <a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/latest"
+       class="bg-teal-600 hover:bg-teal-700 text-white text-sm font-bold px-4 py-2 rounded-full shadow transition hover:scale-105">
+      Download
+    </a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header id="top" class="pt-32 pb-16 bg-gradient-to-b from-navy-50 to-white dark:from-slate-900 dark:to-slate-900">
+  <div class="max-w-5xl mx-auto px-4 text-center">
+    <div class="flex flex-wrap justify-center gap-2 mb-5">
+      <img src="https://img.shields.io/github/v/release/ameenalzubi0-bit/puma-analyzer-releases?label=latest%20release&color=2f6f5e" alt="Latest release">
       <img src="https://img.shields.io/badge/platform-Windows-0078D6" alt="Platform: Windows">
       <a href="https://doi.org/10.5281/zenodo.22754425"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22754425.svg" alt="DOI"></a>
     </div>
-    <div>
-      <a class="cta" href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/latest">Download for Windows</a>
+    <h1 class="text-3xl md:text-5xl font-extrabold leading-tight text-navy-800 dark:text-white">
+      Thin-film thickness &amp; optical constants,<br class="hidden md:block"> from a raw transmission spectrum.
+    </h1>
+    <p class="mt-5 text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+      PUMA Analyzer estimates <strong>thickness</strong> and <strong>optical constants (n, k)</strong>
+      of thin films directly from transmission data, using a physics-based transmittance model
+      combined with robust nonlinear global optimization, built for researchers,
+      graduate students, and QC technicians who need reliable numbers, not just a curve fit.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/latest"
+         class="bg-teal-600 hover:bg-teal-700 text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition hover:scale-105">
+        ⬇ Download for Windows
+      </a>
+      <a href="#how-it-works"
+         class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 font-semibold px-8 py-3.5 rounded-full transition hover:scale-105">
+        See how it works
+      </a>
     </div>
-  </header>
-
-  <div class="card">
-    <p><strong>PUMA Analyzer</strong> estimates the <strong>thickness</strong> and
-    <strong>optical constants (n, k)</strong> of thin films directly from
-    transmission data, using a physics-based transmittance model combined
-    with robust nonlinear global optimization. Built for researchers, graduate
-    students, and QC technicians who need reliable numbers from a raw
-    transmission spectrum, not just a curve fit.</p>
+    <p class="mt-4 text-xs text-slate-500">Free to download; requires a one-time activation code (not a subscription).</p>
   </div>
-
-  <img class="hero" src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/test_run_2_workflow.gif" alt="PUMA Analyzer real workflow: setup to results">
-
-  <div class="card">
-    <h2 style="margin-top:0">What it derives</h2>
-    <p>From a fitted <code>n(&lambda;)</code>, <code>k(&lambda;)</code>, and
-    thickness <code>d</code>, PUMA derives dozens of further physical
-    quantities: optical band gap (Tauc, direct and indirect), Urbach energy,
-    Wemple-DiDomenico dispersion, dielectric function, optical conductivity,
-    and a Kramers-Kronig consistency check, among many others.</p>
-    <p>See the full <a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases#readme">README</a>
-    for the equations, real screenshots, a downloadable sample dataset with
-    step-by-step instructions, and the complete results tree.</p>
+  <div class="max-w-4xl mx-auto px-4 mt-12">
+    <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/test_run_2_workflow.gif"
+         alt="PUMA Analyzer real workflow: setup dialogs and fitted result plots"
+         class="w-full rounded-xl shadow-2xl ring-1 ring-slate-200 dark:ring-slate-700">
+    <p class="text-center text-xs text-slate-500 mt-2">A real workflow: Model Setup &rarr; Run &rarr; fitted spectrum, refractive index, and band gap (Test Run 2, Call 2).</p>
   </div>
+</header>
 
-  <div class="card">
-    <h2 style="margin-top:0">Get started</h2>
-    <ul>
-      <li><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/latest">Download the latest release</a></li>
-      <li><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases#readme">Read the full documentation</a></li>
-      <li><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/blob/main/samples/sigl0097t-dat.txt">Try it with a real sample dataset</a></li>
-      <li><a href="https://doi.org/10.5281/zenodo.22754425">Cite PUMA Analyzer (DOI)</a></li>
-      <li><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/issues">Report an issue</a></li>
-    </ul>
+<!-- ============ WHO IT'S FOR / STATS ============ -->
+<section class="py-10 border-y border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+  <div class="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div><div class="text-2xl font-extrabold text-teal-600">4452</div><div class="text-xs text-slate-500 uppercase tracking-wide">tests passing</div></div>
+    <div><div class="text-2xl font-extrabold text-teal-600">48</div><div class="text-xs text-slate-500 uppercase tracking-wide">derived physical quantities</div></div>
+    <div><div class="text-2xl font-extrabold text-teal-600">7</div><div class="text-xs text-slate-500 uppercase tracking-wide">archived, citable versions</div></div>
+    <div><div class="text-2xl font-extrabold text-teal-600">3.1.5</div><div class="text-xs text-slate-500 uppercase tracking-wide">current version</div></div>
   </div>
+</section>
 
-  <footer>
-    <p>PUMA Analyzer is proprietary software, Copyright Amin Al-Zu'bi. Not open source; see the
-    <a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/blob/main/LICENSE">LICENSE</a>.
-    Developer contact: <a href="https://www.linkedin.com/in/amiinalzubi">LinkedIn</a>.</p>
-  </footer>
-</main>
+<!-- ============ FEATURES ============ -->
+<section id="features" class="py-20 anchor-offset">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center text-navy-800 dark:text-white">What PUMA Analyzer does</h2>
+    <p class="text-center text-slate-500 mt-2 max-w-2xl mx-auto">Built for thin-film and optical-materials researchers, graduate students processing spectrophotometer data, and QC technicians who need a thickness/n/k number they can trust.</p>
+    <div class="mt-12 grid md:grid-cols-2 gap-6">
+      <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow border border-slate-100 dark:border-slate-700">
+        <h3 class="font-bold text-lg">Envelope &amp; Fringe Analysis</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">Automatic detection of interference extrema and a fit-free cross-check of the film's refractive-index dispersion, following the standard Swanepoel formalism.</p>
+      </div>
+      <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow border border-slate-100 dark:border-slate-700">
+        <h3 class="font-bold text-lg">Multi-Start Global Fitting</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">A robust, multi-start nonlinear optimizer refines thickness and dispersion parameters against the full measured spectrum, not just envelope points.</p>
+      </div>
+      <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow border border-slate-100 dark:border-slate-700">
+        <h3 class="font-bold text-lg">Physics-Guided Auto-Configure</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">Sensible starting parameters and bounds are derived from the data itself, so a new user isn't left guessing initial guesses for a nonlinear fit.</p>
+      </div>
+      <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow border border-slate-100 dark:border-slate-700">
+        <h3 class="font-bold text-lg">Classic + Advanced Workflows</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">From a single-run estimate to Monte Carlo / bootstrap / Bayesian uncertainty analysis, batch processing, and full report/figure export.</p>
+      </div>
+    </div>
+
+    <!-- classic vs advanced table -->
+    <div class="mt-10 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700">
+      <table class="w-full text-sm text-left">
+        <thead class="bg-navy-800 text-white">
+          <tr><th class="p-3"></th><th class="p-3">Classic</th><th class="p-3">Advanced Fit</th></tr>
+        </thead>
+        <tbody class="divide-y divide-slate-200 dark:divide-slate-700 bg-white dark:bg-slate-800">
+          <tr><td class="p-3 font-semibold">Engine</td><td class="p-3">Compiled C engine (<code>puma_seq.exe</code>)</td><td class="p-3">Pure Python (<code>puma_advanced.py</code>)</td></tr>
+          <tr><td class="p-3 font-semibold">Search method</td><td class="p-3">Grid search over From/To/Step ranges</td><td class="p-3">Continuous bounds, nonlinear optimization</td></tr>
+          <tr><td class="p-3 font-semibold">Dispersion model</td><td class="p-3">Independent n(&lambda;), k(&lambda;)</td><td class="p-3">Physics-based joint models (Cauchy, Sellmeier...)</td></tr>
+          <tr><td class="p-3 font-semibold">Uncertainty</td><td class="p-3">Not computed</td><td class="p-3">Monte Carlo, bootstrap, Bayesian MCMC</td></tr>
+          <tr><td class="p-3 font-semibold">Best for</td><td class="p-3">A fast first estimate</td><td class="p-3">Uncertainty budgets, sensitivity analysis</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how-it-works" class="py-20 bg-white dark:bg-slate-800/40 anchor-offset">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center text-navy-800 dark:text-white">A typical session</h2>
+    <div class="mt-12 grid md:grid-cols-5 gap-4 text-center">
+      <div class="p-4"><div class="w-12 h-12 mx-auto rounded-full bg-navy-700 text-white flex items-center justify-center font-bold">1</div><p class="mt-3 font-semibold text-sm">Import</p><p class="text-xs text-slate-500 mt-1">A measured T(&lambda;) spectrum</p></div>
+      <div class="p-4"><div class="w-12 h-12 mx-auto rounded-full bg-navy-700 text-white flex items-center justify-center font-bold">2</div><p class="mt-3 font-semibold text-sm">Auto-Configure</p><p class="text-xs text-slate-500 mt-1">Fringe/substrate/bounds proposed</p></div>
+      <div class="p-4"><div class="w-12 h-12 mx-auto rounded-full bg-navy-700 text-white flex items-center justify-center font-bold">3</div><p class="mt-3 font-semibold text-sm">Model Setup</p><p class="text-xs text-slate-500 mt-1">Layers, substrate, search bounds</p></div>
+      <div class="p-4"><div class="w-12 h-12 mx-auto rounded-full bg-teal-600 text-white flex items-center justify-center font-bold">4</div><p class="mt-3 font-semibold text-sm">Run</p><p class="text-xs text-slate-500 mt-1">The compiled C fitting engine</p></div>
+      <div class="p-4"><div class="w-12 h-12 mx-auto rounded-full bg-teal-600 text-white flex items-center justify-center font-bold">5</div><p class="mt-3 font-semibold text-sm">Results &amp; Export</p><p class="text-xs text-slate-500 mt-1">n, k, Eg, and 45 more &rarr; PDF/Excel</p></div>
+    </div>
+    <div class="mt-12 text-center">
+      <a href="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/puma_workflow_tree.png" target="_blank" rel="noopener">
+        <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/puma_workflow_tree.png"
+             alt="Full results tree: every category of physical quantity PUMA derives"
+             class="w-full rounded-xl shadow-lg ring-1 ring-slate-200 dark:ring-slate-700">
+      </a>
+      <p class="text-xs text-slate-500 mt-2">Click to open full-size: every quantity is a real physics-tile label from the app itself.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENGINE / PHYSICS ============ -->
+<section id="engine" class="py-20 anchor-offset">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center text-navy-800 dark:text-white">How the core engine works</h2>
+    <p class="mt-4 text-slate-600 dark:text-slate-300">
+      The numerical core (<code>puma_seq.exe</code>, compiled from <code>puma_seq.c</code>) solves an
+      <strong>inverse problem</strong>: given a measured transmittance spectrum, recover the film
+      thickness and optical constants that produced it. It implements the unconstrained-optimization
+      formulation of Birgin, Chambouleyron &amp; Martínez, credited directly in the engine's own source header.
+    </p>
+
+    <div class="mt-8 bg-white dark:bg-slate-800 rounded-xl p-6 shadow border border-slate-100 dark:border-slate-700">
+      <h3 class="font-bold">The physical model</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">For a thin absorbing film on a transparent substrate at normal incidence:</p>
+      <div class="mt-3">\[ T(\lambda) = \frac{A\,x}{B - C\,x\cos\varphi + D\,x^{2}} \]</div>
+      <div>\[ x = e^{-\alpha d}, \qquad \alpha = \frac{4\pi k}{\lambda}, \qquad \varphi = \frac{4\pi n d}{\lambda} \]</div>
+    </div>
+
+    <div class="mt-6 bg-white dark:bg-slate-800 rounded-xl p-6 shadow border border-slate-100 dark:border-slate-700">
+      <h3 class="font-bold">The fitting objective</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Minimized via multi-start global optimization (reported as the Quadratic Error, QE):</p>
+      <div class="mt-3">\[ F(n,k,d) = \sum_i \Big[T_{\text{obs}}(\lambda_i) - T_{\text{model}}(\lambda_i;n,k,d)\Big]^2 \]</div>
+    </div>
+
+    <div class="mt-10 grid md:grid-cols-3 gap-5">
+      <div class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow border border-slate-100 dark:border-slate-700">
+        <h4 class="font-bold text-sm">Tauc band gap</h4>
+        <div class="text-sm mt-2">\[(\alpha E)^{r}=B(E-E_g)\]</div>
+        <p class="text-xs text-slate-500 mt-1">r=2 direct, r=1/2 indirect.</p>
+      </div>
+      <div class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow border border-slate-100 dark:border-slate-700">
+        <h4 class="font-bold text-sm">Urbach energy</h4>
+        <div class="text-sm mt-2">\[\alpha(E)=\alpha_0 e^{E/E_u}\]</div>
+        <p class="text-xs text-slate-500 mt-1">Disorder-related exponential tail.</p>
+      </div>
+      <div class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow border border-slate-100 dark:border-slate-700">
+        <h4 class="font-bold text-sm">Wemple-DiDomenico</h4>
+        <div class="text-sm mt-2">\[n^2(E)-1=\frac{E_0 E_d}{E_0^2-E^2}\]</div>
+        <p class="text-xs text-slate-500 mt-1">Single-oscillator dispersion.</p>
+      </div>
+    </div>
+    <p class="text-center text-sm mt-8"><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases#how-the-core-engine-works" class="text-teal-600 font-semibold">Read the full derivation, including the Kramers-Kronig consistency check &rarr;</a></p>
+  </div>
+</section>
+
+<!-- ============ SCREENSHOTS ============ -->
+<section id="screenshots" class="py-20 bg-white dark:bg-slate-800/40 anchor-offset">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center text-navy-800 dark:text-white">Real screenshots, real data</h2>
+    <p class="text-center text-slate-500 mt-2">Unedited figures from two real PUMA analysis runs on real transmission-spectrum data.</p>
+    <div class="mt-10 grid md:grid-cols-2 gap-5">
+      <figure class="rounded-xl overflow-hidden shadow border border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800">
+        <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/screenshot_main_window.png" alt="PUMA Analyzer main window" class="w-full">
+        <figcaption class="p-3 text-xs text-slate-500">Main window</figcaption>
+      </figure>
+      <figure class="rounded-xl overflow-hidden shadow border border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800">
+        <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/test_run_1_observed_vs_fitted.png" alt="Test Run 1 observed vs fitted spectrum" class="w-full">
+        <figcaption class="p-3 text-xs text-slate-500">Test Run 1: observed vs fitted spectrum (d = 350 nm, QE = 0.00900)</figcaption>
+      </figure>
+      <figure class="rounded-xl overflow-hidden shadow border border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800">
+        <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/test_run_1_refractive_index.png" alt="Test Run 1 refractive index" class="w-full">
+        <figcaption class="p-3 text-xs text-slate-500">Test Run 1: refractive index n(&lambda;)</figcaption>
+      </figure>
+      <figure class="rounded-xl overflow-hidden shadow border border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800">
+        <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/test_run_2_bandgap_tauc.png" alt="Test Run 2 direct Tauc band gap" class="w-full">
+        <figcaption class="p-3 text-xs text-slate-500">Test Run 2: direct Tauc gap (Eg = 2.074 eV, QE = 0.00670)</figcaption>
+      </figure>
+    </div>
+    <p class="text-center text-sm mt-6"><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases#screenshots" class="text-teal-600 font-semibold">See the full gallery on GitHub &rarr;</a></p>
+  </div>
+</section>
+
+<!-- ============ EXTENSIONS ============ -->
+<section id="extensions" class="py-20 anchor-offset">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center text-navy-800 dark:text-white">Optional extension tools</h2>
+    <p class="text-center text-slate-500 mt-2 max-w-2xl mx-auto">An opt-in library of tools (enabled from Preferences) for analysis beyond a single fit.</p>
+    <div class="mt-10 grid md:grid-cols-3 gap-5">
+      <figure class="rounded-xl overflow-hidden shadow border border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800">
+        <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/ext_tmm_stack.png" alt="TMM Stack Simulator" class="w-full">
+        <figcaption class="p-3 text-xs"><strong>TMM Stack Simulator</strong><br><span class="text-slate-500">Coherent multilayer R/T, ellipsometry, or ATR.</span></figcaption>
+      </figure>
+      <figure class="rounded-xl overflow-hidden shadow border border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800">
+        <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/ext_global_stack_fit.png" alt="Global Stack Fit Multi-Angle" class="w-full">
+        <figcaption class="p-3 text-xs"><strong>Global Stack Fit</strong><br><span class="text-slate-500">Multi-angle fit; doubles as a coating-design tool.</span></figcaption>
+      </figure>
+      <figure class="rounded-xl overflow-hidden shadow border border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800">
+        <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/ext_parameter_sweep.png" alt="Parameter Sweep" class="w-full">
+        <figcaption class="p-3 text-xs"><strong>Parameter Sweep</strong><br><span class="text-slate-500">1D thickness sweep, averaged reflectance.</span></figcaption>
+      </figure>
+      <figure class="rounded-xl overflow-hidden shadow border border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800">
+        <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/ext_data_factory.png" alt="Data Factory" class="w-full">
+        <figcaption class="p-3 text-xs"><strong>Data Factory</strong><br><span class="text-slate-500">Smoothing, custom formulas, T/R inversion.</span></figcaption>
+      </figure>
+      <figure class="rounded-xl overflow-hidden shadow border border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800">
+        <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/ext_export_center.png" alt="Export Center" class="w-full">
+        <figcaption class="p-3 text-xs"><strong>Export Center</strong><br><span class="text-slate-500">PDF, Excel, CSV, JCAMP-DX, HDF5/NeXus.</span></figcaption>
+      </figure>
+      <div class="rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-center p-6 text-center">
+        <a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases#extension-tools-gallery" class="text-teal-600 font-semibold text-sm">See the full README for the complete list of AI/ML and physics tools &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRY IT ============ -->
+<section class="py-20 bg-white dark:bg-slate-800/40">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center text-navy-800 dark:text-white">Try it yourself, no instrument required</h2>
+    <p class="mt-4 text-slate-600 dark:text-slate-300 text-center">
+      The exact real dataset used above (<code>sigl0097t-dat.txt</code>) is included in the repository, so you
+      can reproduce the Test Run 2 walkthrough step by step.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/blob/main/samples/sigl0097t-dat.txt"
+         class="bg-navy-700 hover:bg-navy-800 text-white font-bold px-6 py-3 rounded-full shadow transition hover:scale-105">Download sample dataset</a>
+      <a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases#try-it-yourself-with-sample-data"
+         class="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 font-semibold px-6 py-3 rounded-full transition hover:scale-105">Read the step-by-step guide</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOWNLOAD / REQUIREMENTS ============ -->
+<section id="download" class="py-20">
+  <div class="max-w-5xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-start">
+    <div>
+      <h2 class="text-2xl font-extrabold text-navy-800 dark:text-white">Download</h2>
+      <p class="mt-3 text-slate-600 dark:text-slate-300 text-sm">Each release is a single <code>.zip</code> containing <code>PUMA_Analyzer.exe</code> (no separate Python install required), the C computation engine, and a Documents folder with user manuals and the physics reference.</p>
+      <a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/latest"
+         class="mt-5 inline-block bg-teal-600 hover:bg-teal-700 text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition hover:scale-105">⬇ Download latest (v3.1.5)</a>
+      <p class="text-xs text-slate-500 mt-3">Requires a one-time activation code. <a href="#faq" class="underline">See FAQ</a> or <a href="https://www.linkedin.com/in/amiinalzubi" class="underline">contact the developer</a>.</p>
+    </div>
+    <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow border border-slate-100 dark:border-slate-700">
+      <h3 class="font-bold">System requirements</h3>
+      <ul class="mt-3 text-sm text-slate-600 dark:text-slate-300 space-y-2 list-disc list-inside">
+        <li><strong>OS:</strong> Windows 10 or later (64-bit) only</li>
+        <li><strong>Disk:</strong> ~500 MB free</li>
+        <li><strong>Memory:</strong> 4 GB minimum, 8 GB+ recommended for Monte Carlo/AI tools</li>
+        <li><strong>Network:</strong> only for activation and update checks; fully offline otherwise</li>
+        <li><strong>GPU:</strong> not required</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VERSION HISTORY ============ -->
+<section class="py-20 bg-white dark:bg-slate-800/40">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl font-extrabold text-navy-800 dark:text-white text-center">Version history</h2>
+    <div class="mt-8 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700">
+      <table class="w-full text-sm text-left">
+        <thead class="bg-navy-800 text-white"><tr><th class="p-3">Version</th><th class="p-3">Highlight</th></tr></thead>
+        <tbody class="divide-y divide-slate-200 dark:divide-slate-700 bg-white dark:bg-slate-800">
+          <tr><td class="p-3 font-semibold whitespace-nowrap"><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.5" class="text-teal-600">3.1.5</a></td><td class="p-3">Large AI/ML and physics/optics tool library; license-activation and update-check wiring fixed</td></tr>
+          <tr><td class="p-3 font-semibold whitespace-nowrap"><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.4" class="text-teal-600">3.1.4</a></td><td class="p-3">SCOUT extension tools, run starring/notes, drag-and-drop import</td></tr>
+          <tr><td class="p-3 font-semibold whitespace-nowrap"><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.3" class="text-teal-600">3.1.3</a></td><td class="p-3">Update-install reliability fixes</td></tr>
+          <tr><td class="p-3 font-semibold whitespace-nowrap"><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.2" class="text-teal-600">3.1.2</a></td><td class="p-3">Clearer Update Now / Not Now choice</td></tr>
+          <tr><td class="p-3 font-semibold whitespace-nowrap"><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.1" class="text-teal-600">3.1.1</a></td><td class="p-3">Update download/zip integrity verification</td></tr>
+          <tr><td class="p-3 font-semibold whitespace-nowrap"><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.1.0" class="text-teal-600">3.1.0</a></td><td class="p-3">Parallel Classic engine splits the thickness axis too</td></tr>
+          <tr><td class="p-3 font-semibold whitespace-nowrap"><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases/tag/v3.0" class="text-teal-600">3.0</a></td><td class="p-3">Initial release of the current V3 GUI generation</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-center text-sm mt-5"><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases" class="text-teal-600 font-semibold">Full release notes on GitHub &rarr;</a></p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="py-20 anchor-offset">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center text-navy-800 dark:text-white">Frequently asked questions</h2>
+    <div class="mt-10 space-y-3">
+      <details class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow border border-slate-100 dark:border-slate-700" open>
+        <summary class="font-semibold flex justify-between items-center">Why does PUMA need a serial/activation code?
+          <svg class="chev w-4 h-4 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-3">The activation gate protects the project as a scientific tool developed and maintained by one person: it is not a subscription or a commercial-license mechanism, just access control.</p>
+      </details>
+      <details class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow border border-slate-100 dark:border-slate-700">
+        <summary class="font-semibold flex justify-between items-center">Is PUMA open source?
+          <svg class="chev w-4 h-4 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-3">No. The release binaries and update manifest in this repository are public, but the application's source code is maintained in a private repository.</p>
+      </details>
+      <details class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow border border-slate-100 dark:border-slate-700">
+        <summary class="font-semibold flex justify-between items-center">Does PUMA send my measurement data anywhere?
+          <svg class="chev w-4 h-4 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-3">No. Fitting and analysis run entirely locally. The only network calls are the one-time activation check and the startup update check; neither transmits spectra or project data.</p>
+      </details>
+      <details class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow border border-slate-100 dark:border-slate-700">
+        <summary class="font-semibold flex justify-between items-center">Why is the engine a compiled C program instead of pure Python?
+          <svg class="chev w-4 h-4 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-3"><code>puma_seq.c</code> is a long-vetted, scientifically-validated numerical core; recompiling it with a different toolchain has been shown to shift results at the margins, so the shipped binary is pinned and hash-verified rather than rebuilt on each machine.</p>
+      </details>
+    </div>
+    <p class="text-center text-sm mt-8"><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases#faq" class="text-teal-600 font-semibold">More questions answered in the README &rarr;</a></p>
+  </div>
+</section>
+
+<!-- ============ CITE ============ -->
+<section class="py-16 bg-navy-800 text-white">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-xl font-bold">Citing PUMA Analyzer</h2>
+    <p class="mt-3 text-sm text-slate-300">Every release, including past ones, is archived on Zenodo with a permanent DOI, and mirrored on Software Heritage.</p>
+    <div class="mt-5 flex flex-wrap justify-center gap-3">
+      <a href="https://doi.org/10.5281/zenodo.22754425" class="bg-white text-navy-800 font-bold px-5 py-2.5 rounded-full text-sm">10.5281/zenodo.22754425</a>
+      <a href="https://archive.softwareheritage.org/swh:1:snp:6a05db968f59f36c60ebf6b35062bca534beec96" class="bg-teal-600 font-bold px-5 py-2.5 rounded-full text-sm">Software Heritage archive</a>
+      <a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/blob/main/CITATION.cff" class="border border-white/40 font-semibold px-5 py-2.5 rounded-full text-sm">CITATION.cff</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="py-14 bg-navy-900 text-slate-300">
+  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-8 text-sm">
+    <div>
+      <div class="flex items-center gap-2 text-white font-extrabold text-base">
+        <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/puma_logo.png" class="w-6 h-6 rounded" alt="">
+        PUMA Analyzer
+      </div>
+      <p class="mt-3 text-slate-400">Thin-film thickness and optical-constants estimation, from a raw transmission spectrum.</p>
+    </div>
+    <div>
+      <div class="uppercase text-xs text-slate-500 font-bold mb-3">Project</div>
+      <ul class="space-y-2">
+        <li><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases#readme" class="hover:text-white">Full README</a></li>
+        <li><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/releases" class="hover:text-white">Releases</a></li>
+        <li><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/issues" class="hover:text-white">Report an issue</a></li>
+        <li><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/blob/main/LICENSE" class="hover:text-white">License</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="uppercase text-xs text-slate-500 font-bold mb-3">Archives</div>
+      <ul class="space-y-2">
+        <li><a href="https://doi.org/10.5281/zenodo.22754425" class="hover:text-white">Zenodo (DOI)</a></li>
+        <li><a href="https://archive.softwareheritage.org/swh:1:snp:6a05db968f59f36c60ebf6b35062bca534beec96" class="hover:text-white">Software Heritage</a></li>
+        <li><a href="https://github.com/ameenalzubi0-bit/puma-analyzer-releases/blob/main/llms.txt" class="hover:text-white">llms.txt</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="uppercase text-xs text-slate-500 font-bold mb-3">Developer</div>
+      <ul class="space-y-2">
+        <li>Amin Al-Zu'bi</li>
+        <li><a href="https://www.linkedin.com/in/amiinalzubi" class="hover:text-white">LinkedIn</a></li>
+        <li><a href="mailto:Amiinalzubii@gmail.com" class="hover:text-white">Email</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-6xl mx-auto px-4 mt-10 pt-6 border-t border-slate-800 text-xs text-slate-500 text-center">
+    Copyright Amin Al-Zu'bi. PUMA Analyzer is proprietary software; not open source.
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "\\[", right: "\\]", display: true},
+        {left: "\\(", right: "\\)", display: false}
+      ]
+    });
+  });
+</script>
 </body>
 </html>
