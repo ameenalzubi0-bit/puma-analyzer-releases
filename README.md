@@ -53,6 +53,14 @@ reliable numbers from a raw transmission spectrum, not just a curve fit.
   Monte Carlo / bootstrap / Bayesian uncertainty analysis, batch
   processing, and full report/figure export.
 
+|  | Classic | Advanced Fit |
+|---|---|---|
+| Engine | Compiled C engine (`puma_seq.exe`, or its parallel build) | Pure Python (`puma_advanced.py`) |
+| Search method | Grid search over From/To/Step ranges per parameter | Continuous bounds with nonlinear optimization |
+| Dispersion model | Independent `n(λ)`, `k(λ)` per wavelength | Physics-based joint models (Cauchy, Sellmeier, and others) |
+| Uncertainty | Not computed | Monte Carlo, bootstrap, and Bayesian MCMC |
+| Best for | A fast first estimate on a known material | Physically-constrained fits, uncertainty budgets, sensitivity analysis |
+
 ## What the program actually does
 
 A typical PUMA session looks like this:
@@ -175,6 +183,16 @@ Film thickness 100 nm, average refractive index 3.685, direct band gap
 <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/test_run_2_bandgap_tauc.png" width="720" alt="Test Run 2: direct Tauc plot with extracted band gap">
 
 <img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/test_run_2_residuals.png" width="720" alt="Test Run 2: fit residuals (observed minus calculated transmittance)">
+
+**Workflow walkthrough (Test Run 2, Call 2).** The animation below cycles
+through the actual dialogs and output figures from that run's second
+call: the Model Setup screens (4-layer stack on a Corning 7059 glass
+substrate, thickness/inflexion/n/k search bounds), the Call 2 refinement
+dialog (narrows the thickness search to 95-105 nm around Call 1's result
+and targets its QE of 0.00670063), and the resulting fitted spectrum,
+refractive index, and band gap.
+
+<img src="https://raw.githubusercontent.com/ameenalzubi0-bit/puma-analyzer-releases/main/docs/test_run_2_workflow.gif" width="720" alt="Animated walkthrough of Test Run 2 Call 2: setup dialogs and result plots">
 
 ## Sample engine run
 
