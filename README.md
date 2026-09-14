@@ -507,6 +507,13 @@ source is maintained in a private repository; this public repo exists so
 the app's built-in update checker can verify the latest version and
 download it without requiring any embedded credentials.
 
+**License:** PUMA Analyzer is proprietary software, Copyright Amin
+Al-Zu'bi. All rights reserved. It is not released under an open-source
+license; use of the packaged application is governed by its
+activation-code access model (see [FAQ](#faq)). The contents of this
+public repository (release binaries, documentation, and sample data)
+may not be redistributed without permission.
+
 [⬆ Back to top](#table-of-contents)
 
 ## Developer & contact
