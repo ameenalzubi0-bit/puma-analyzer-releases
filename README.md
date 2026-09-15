@@ -17,7 +17,7 @@
     <img src="https://img.shields.io/badge/issues-report%20one-b23b3b" alt="Report an issue">
   </a>
   <a href="https://doi.org/10.5281/zenodo.22754425">
-    <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22754425.svg" alt="DOI">
+    <img src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.22754425-2f6f5e" alt="DOI">
   </a>
 </p>
 
