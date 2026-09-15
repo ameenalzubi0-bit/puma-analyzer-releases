@@ -1,4 +1,57 @@
+# PUMA Analyzer, https://ameenalzubi0-bit.github.io/puma-analyzer-releases/
+# Everything here is public documentation for a freely downloadable
+# application, so every crawler is welcome, including AI search and
+# answer agents. They are named explicitly below so the intent is
+# unambiguous rather than merely implied by the wildcard rule.
+
 User-agent: *
+Allow: /
+
+# Search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# AI search / answer agents (these are the ones that can cite pages)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://ameenalzubi0-bit.github.io/puma-analyzer-releases/sitemap.xml
