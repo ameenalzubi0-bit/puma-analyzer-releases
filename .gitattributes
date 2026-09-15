@@ -1,0 +1,15 @@
+# This repository holds release binaries, documentation, and the
+# GitHub Pages landing page -- no PUMA Analyzer application source
+# code (that is Python/C, in a separate private repository). The
+# lines below stop GitHub's language-detection bar from being skewed
+# by the landing page's build tooling (Tailwind) so it does not
+# misrepresent this repo as a JavaScript/CSS project.
+
+package.json linguist-vendored
+package-lock.json linguist-vendored
+tailwind.config.js linguist-vendored
+tw-input.css linguist-vendored
+docs/tailwind.css linguist-generated=true
+docs/index.html linguist-documentation
+docs/*.txt linguist-documentation
+docs/*.xml linguist-documentation
