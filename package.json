@@ -1,0 +1,17 @@
+{
+  "name": "puma-analyzer-releases",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Build tooling for the PUMA Analyzer GitHub Pages landing page (docs/index.html). No application source code lives here.",
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i tw-input.css -o docs/tailwind.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ameenalzubi0-bit/puma-analyzer-releases.git"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
